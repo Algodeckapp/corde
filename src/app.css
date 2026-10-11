@@ -35,6 +35,7 @@ body {
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  max-width: 100vw;
 }
 
 a {
@@ -189,6 +190,7 @@ h1 {
   box-shadow: 0 20px 70px rgba(70, 50, 200, .25);
   text-align: left;
   padding: 18px 20px;
+  overflow: visible;
 }
 
 .box .ph {
@@ -250,10 +252,11 @@ h1 {
 
 .keys {
   position: absolute;
-  right: 18px;
-  top: 14px;
+  right: 0;
+  top: -38px;
   display: flex;
   gap: 6px;
+  z-index: 10;
 }
 
 .k {
@@ -477,7 +480,7 @@ section {
   padding: 26px 22px 28px;
   text-align: center;
   position: relative;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .card.hot:before {
@@ -486,6 +489,21 @@ section {
   inset: 0;
   background: radial-gradient(circle at 90% 0%, rgba(150, 90, 255, .7), transparent 55%);
   opacity: .75;
+}
+
+.card.hot::after {
+  content: "Customizable";
+  position: absolute;
+  top: -28px;
+  right: 0;
+  font-size: 11px;
+  padding: 4px 10px;
+  background: rgba(150, 90, 255, .4);
+  border: 1px solid rgba(150, 135, 255, .6);
+  border-radius: 20px;
+  color: #d0c5ff;
+  white-space: nowrap;
+  animation: pulse-badge 2s ease-in-out infinite;
 }
 
 .card>* {
@@ -763,6 +781,17 @@ footer {
   }
 }
 
+@keyframes pulse-badge {
+  0%, 100% {
+    opacity: .7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
 @keyframes tilt {
   0%, 100% {
     transform: rotate(0);
@@ -1037,6 +1066,9 @@ footer {
   }
   section {
     padding: 60px 0;
+  }
+  .hero {
+    padding: 32px 0 40px;
   }
   #features .grid {
     grid-template-columns: 1fr 1fr;

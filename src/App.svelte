@@ -71,6 +71,7 @@
   }
 
   let recommendedOS = "";
+  let mobileMenuOpen = false;
 
   onMount(() => {
     loop();
@@ -107,10 +108,28 @@
         <path class="l" d="M333.6,56.4 A90,90 0 1 0 333.6,183.6"/>
       </svg>Cordė
     </a>
-    <div class="links">
-      <a href="#features">Product</a><a href="#teams">Use cases</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+    <div class="links" class:open={mobileMenuOpen}>
+      <a href="#features" onclick={() => mobileMenuOpen = false}>Product</a>
+      <a href="#teams" onclick={() => mobileMenuOpen = false}>Use cases</a>
+      <a href="#pricing" onclick={() => mobileMenuOpen = false}>Pricing</a>
+      <a href="#faq" onclick={() => mobileMenuOpen = false}>FAQ</a>
     </div>
-    <a class="btn" href="#pricing">Get Started</a>
+    <div class="nav-actions">
+      <a class="btn" href="#pricing">Get Started</a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+        aria-expanded={mobileMenuOpen}
+        onclick={() => mobileMenuOpen = !mobileMenuOpen}
+      >
+        {#if mobileMenuOpen}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>
+        {:else}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        {/if}
+      </button>
+    </div>
   </nav>
 
   <header class="hero" id="top">

@@ -73,26 +73,45 @@
 
   let recommendedOS = "";
   let mobileMenuOpen = false;
+  let navHidden = false;
 
   onMount(() => {
     loop();
     const u = navigator.userAgent;
     recommendedOS = /Android|iPhone|iPad/.test(u) ? "" : /Mac/.test(u) ? "mac" : /Win/.test(u) ? "win" : /Linux|X11/.test(u) ? "linux" : "";
 
+    let previousScrollY = window.scrollY;
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      if (currentScrollY < 80 || currentScrollY < previousScrollY) {
+        navHidden = false;
+      } else if (currentScrollY > previousScrollY) {
+        navHidden = true;
+      }
+      previousScrollY = currentScrollY;
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
     const cards = document.querySelectorAll("#features .card");
+    let featureObserver: IntersectionObserver | undefined;
     if ("IntersectionObserver" in window) {
-      const io = new IntersectionObserver(entries => {
+      featureObserver = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add("in");
-            io.unobserve(entry.target);
+            featureObserver?.unobserve(entry.target);
           }
         });
       }, { threshold: 0.25 });
-      cards.forEach(card => io.observe(card));
+      cards.forEach(card => featureObserver?.observe(card));
     } else {
       cards.forEach(card => card.classList.add("in"));
     }
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      featureObserver?.disconnect();
+    };
   });
 
   function getChipBackground(i: number) {
@@ -102,7 +121,7 @@
 
 <div class="glow" aria-hidden="true"></div><div class="haze" aria-hidden="true"></div>
 <div class="wrap">
-  <nav>
+  <nav class:hidden={navHidden}>
     <a class="brand" href="#top" aria-label="Cordė home">
       <img src={cordeLogo} alt="" aria-hidden="true" />Cordė
     </a>
@@ -129,6 +148,7 @@
       </button>
     </div>
   </nav>
+  <div class="nav-spacer" aria-hidden="true"></div>
 
   <header class="hero" id="top">
     <h1>Smart Voice Input for Your Terminal</h1>
@@ -151,7 +171,7 @@
       <a class="btn lg" href="#pricing">Get Cordė</a>
       <a class="btn lg ghost" href="#how">See how it works</a>
     </div>
-    <div class="note">Pronounced “cord-ay” · macOS, Windows, Linux · $1.99/month</div>
+    <div class="note">100% offline · Custom hotkeys · Works anywhere</div>
   </header>
 
   <div class="dl" id="download">

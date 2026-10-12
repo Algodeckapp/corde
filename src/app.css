@@ -119,17 +119,10 @@ nav {
   letter-spacing: -.01em;
 }
 
-.brand svg {
+.brand img {
   width: 34px;
-  height: 20px;
-}
-
-.l {
-  fill: none;
-  stroke: #fff;
-  stroke-width: 17;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  height: 26px;
+  object-fit: contain;
 }
 
 .links {
@@ -1151,6 +1144,14 @@ footer {
 }
 
 @media (max-width:560px) {
+  .glow {
+    top: -50vw;
+    width: 100vw;
+    height: 100vw;
+    margin-left: 0;
+    transform: translateX(-50%);
+    box-shadow: 0 0 12vw 3vw rgba(96, 64, 255, .55), inset 0 3vw 9vw rgba(140, 110, 255, .65), inset 0 2px 1px rgba(200, 185, 255, .8);
+  }
   .price {
     grid-template-columns: 1fr;
   }

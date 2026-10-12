@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte';
+  import cordeLogo from './assets/corde icon.png';
 
   const TXT = "refactor the auth middleware to use JWT refresh tokens, add per-user rate limiting and write tests";
   
@@ -103,10 +104,7 @@
 <div class="wrap">
   <nav>
     <a class="brand" href="#top" aria-label="Cordė home">
-      <svg viewBox="0 0 420 240" aria-hidden="true">
-        <path class="l" d="M20,150 C40,162 55,152 66,118 C76,84 88,66 98,84 C110,108 112,176 132,176 C152,176 186,100 206.4,56.4"/>
-        <path class="l" d="M333.6,56.4 A90,90 0 1 0 333.6,183.6"/>
-      </svg>Cordė
+      <img src={cordeLogo} alt="" aria-hidden="true" />Cordė
     </a>
     <div class="links" class:open={mobileMenuOpen}>
       <a href="#features" onclick={() => mobileMenuOpen = false}>Product</a>

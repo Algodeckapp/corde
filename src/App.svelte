@@ -76,6 +76,11 @@
   let navHidden = false;
 
   onMount(() => {
+    const previousScrollRestoration = history.scrollRestoration;
+    history.scrollRestoration = "manual";
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+
     loop();
     const u = navigator.userAgent;
     recommendedOS = /Android|iPhone|iPad/.test(u) ? "" : /Mac/.test(u) ? "mac" : /Win/.test(u) ? "win" : /Linux|X11/.test(u) ? "linux" : "";
@@ -111,6 +116,7 @@
     return () => {
       window.removeEventListener("scroll", handleScroll);
       featureObserver?.disconnect();
+      history.scrollRestoration = previousScrollRestoration;
     };
   });
 
@@ -132,7 +138,7 @@
       <a href="#faq" onclick={() => mobileMenuOpen = false}>FAQ</a>
     </div>
     <div class="nav-actions">
-      <a class="btn" href="#pricing">Get Started</a>
+      <a class="btn" href="#pricing">View pricing</a>
       <button
         class="menu-toggle"
         type="button"
@@ -168,10 +174,10 @@
       <span class="btn go">Send</span>
     </div>
     <div class="cta">
-      <a class="btn lg" href="#pricing">Get Cordė</a>
+      <a class="btn lg" href="#pricing">See pricing</a>
       <a class="btn lg ghost" href="#how">See how it works</a>
     </div>
-    <div class="note">100% offline · Custom hotkeys · Works anywhere</div>
+    <div class="note">Local speech recognition · Custom hotkeys · Audio stays private</div>
   </header>
 
   <div class="dl" id="download">
@@ -266,8 +272,8 @@
             </g>
           </svg>
         </div>
-        <h3>100% on-device</h3>
-        <p>Runs locally. Audio never leaves your machine.</p>
+        <h3>On-device speech</h3>
+        <p>Speech is transcribed on-device and audio is never uploaded.</p>
       </div>
       <div class="card" style="--i: 0">
         <div class="fv">
@@ -372,10 +378,10 @@
       </div>
       <div class="tile t3">
         <h3>Private by design</h3>
-        <p>Proprietary code stays proprietary. Nothing is uploaded and nothing needs an API key.</p>
+        <p>Speech is transcribed locally and audio isn't uploaded. Account, subscription, and license checks need internet access.</p>
         <div class="vis">
           <div class="chips">
-            <span>Offline</span><span>No cloud</span><span>No API keys</span><span>No uploads</span>
+            <span>Local speech</span><span>No audio uploads</span><span>No API key</span><span>Internet for license</span>
           </div>
         </div>
       </div>
@@ -384,30 +390,41 @@
 
   <section id="pricing">
     <div class="hd">
-      <h2>Simple Pricing</h2>
-      <p>One plan. Everything included.</p>
+      <h2>Planned Pricing</h2>
+      <p>Proposed plans. Payments and account features are not available yet.</p>
     </div>
     <div class="price">
       <div class="plan pop">
-        <small>Cordė</small>
-        <div class="n">$1.99 <s>/ month</s></div>
-        <ul>
-          <li>Unlimited on-device dictation</li>
-          <li>macOS, Windows and Linux</li>
-          <li>All models and hotkey modes</li>
-          <li>Automatic updates</li>
-        </ul>
-        <a class="btn" href="#top">Get Cordė</a>
+        <small class="plan-label">FREE TRIAL · PROPOSED</small>
+        <h3>Try Cordė</h3>
+        <strong class="plan-price">7 days</strong>
+        <p class="plan-detail">Free, with no payment card required.</p>
+      </div>
+      <div class="plan">
+        <small class="plan-label">MONTHLY · PROPOSED</small>
+        <h3>Monthly</h3>
+        <strong class="plan-price">$4.99</strong>
+        <p class="plan-detail">Per month after the free trial.</p>
+      </div>
+      <div class="plan">
+        <small class="plan-label">ANNUAL · PROPOSED</small>
+        <h3>Annual</h3>
+        <strong class="plan-price">$39.99</strong>
+        <p class="plan-detail">Per year after the free trial.</p>
       </div>
     </div>
+    <p class="pricing-status">All plans include unlimited local dictation on macOS, Windows, and Linux. One active device per account; device deactivation and transfer are planned.</p>
+    <p class="legal-note">Pricing, trial, billing, device, and license terms are proposed and require owner/legal review. Payments and account features are not available yet.</p>
   </section>
 
   <section id="faq" style="padding-top:20px">
     <div class="hd"><h2>Questions</h2></div>
     <div class="faq">
-      <details><summary>Does my voice leave my computer?</summary><p>No. Transcription runs locally with Faster-Whisper, so audio is never sent anywhere.</p></details>
+      <details><summary>Does my voice leave my computer?</summary><p>Speech recognition runs locally, and audio isn't uploaded for transcription. Account, subscription, and license checks require an internet connection.</p></details>
       <details><summary>Which apps does it work with?</summary><p>Any app that accepts keyboard input. It was designed for terminals and CLI agents like Claude Code.</p></details>
       <details><summary>How accurate is it?</summary><p>It uses OpenAI's Whisper models in an optimized runtime. Smaller models are faster, and you can pick a larger one for more accuracy.</p></details>
+      <details><summary>What are the planned plans?</summary><p>The proposed plan includes a 7-day free trial with no payment card required, then $4.99/month or an optional $39.99/year. Pricing and payments aren't available yet. After the trial, an active plan would be required to keep dictating; the proposed experience is to ask for an upgrade when you try—not on every app launch. Existing transcripts and settings won't be deleted or locked.</p></details>
+      <details><summary>Can I use Cordė on a replacement device?</summary><p>The proposed plan allows one active device per account. A way to deactivate or transfer activation when replacing a device is planned; account and license features aren't available yet.</p></details>
       <details><summary>How do I say the name?</summary><p>“Cord-ay”.</p></details>
     </div>
   </section>
@@ -415,7 +432,7 @@
   <section style="padding-top:20px">
     <div class="final">
       <h2>Stop typing. Start speaking.</h2>
-      <a class="btn lg" href="#pricing">Get Cordė</a>
+      <a class="btn lg" href="#pricing">View planned pricing</a>
     </div>
   </section>
 

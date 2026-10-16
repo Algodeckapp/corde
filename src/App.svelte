@@ -177,22 +177,28 @@
       <a class="btn lg" href="#pricing">See pricing</a>
       <a class="btn lg ghost" href="#how">See how it works</a>
     </div>
-    <div class="note">Local speech recognition · Custom hotkeys · Audio stays private</div>
+    <a class="trial-card" href="#download">
+      <span class="trial-card-copy">
+        <b>Try Cordė free</b>
+        <small>7-day free trial · No credit card required</small>
+      </span>
+      <span class="trial-card-arrow" aria-hidden="true">→</span>
+    </a>
   </header>
 
   <div class="dl" id="download">
-    <a class="dlb" href="#pricing" class:rec={recommendedOS === 'mac'} data-os="mac">
+    <span class="dlb" aria-disabled="true" data-os="mac">
       <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/></svg>
-      <span><b>macOS</b><small>Download · Intel &amp; Apple Silicon</small></span>
-    </a>
-    <a class="dlb" href="#pricing" class:rec={recommendedOS === 'win'} data-os="win">
+      <span><b>macOS</b><small>Coming soon · Intel &amp; Apple Silicon</small></span>
+    </span>
+    <a class="dlb" href="https://gtkndevewdmuomprkaec.supabase.co/storage/v1/object/public/corde-downloads/Corde-nsis-setup.exe?download=Corde-nsis-setup.exe" class:rec={recommendedOS === 'win'} data-os="win">
       <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>
       <span><b>Windows</b><small>Download · Windows 10 &amp; 11</small></span>
     </a>
-    <a class="dlb" href="#pricing" class:rec={recommendedOS === 'linux'} data-os="linux">
+    <span class="dlb" aria-disabled="true" data-os="linux">
       <svg class="fi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12.504 0c-.155 0-.315.008-.48.021-4.226.333-3.105 4.807-3.17 6.298-.076 1.092-.3 1.953-1.05 3.02-.885 1.051-2.127 2.75-2.716 4.521-.278.832-.41 1.684-.287 2.489a.424.424 0 00-.11.135c-.26.268-.45.6-.663.839-.199.199-.485.267-.797.4-.313.136-.658.269-.864.68-.09.189-.136.394-.132.602 0 .199.027.4.055.536.058.399.116.728.04.97-.249.68-.28 1.145-.106 1.484.174.334.535.47.94.601.81.2 1.91.135 2.774.6.926.466 1.866.67 2.616.47.526-.116.97-.464 1.208-.946.587-.003 1.23-.269 2.26-.334.699-.058 1.574.267 2.577.2.025.134.063.198.114.333l.003.003c.391.778 1.113 1.132 1.884 1.071.771-.06 1.592-.536 2.257-1.306.631-.765 1.683-1.084 2.378-1.503.348-.199.629-.469.649-.853.023-.4-.2-.811-.714-1.376v-.097l-.003-.003c-.17-.2-.25-.535-.338-.926-.085-.401-.182-.786-.492-1.046h-.003c-.059-.054-.123-.067-.188-.135a.357.357 0 00-.19-.064c.431-1.278.264-2.55-.173-3.694-.533-1.41-1.465-2.638-2.175-3.483-.796-1.005-1.576-1.957-1.56-3.368.026-2.152.236-6.133-3.544-6.139zm.529 3.405h.013c.213 0 .396.062.584.198.19.135.33.332.438.533.105.259.158.459.166.724 0-.02.006-.04.006-.06v.105a.086.086 0 01-.004-.021l-.004-.024a1.807 1.807 0 01-.15.706.953.953 0 01-.213.335.71.71 0 00-.088-.042c-.104-.045-.198-.064-.284-.133a1.312 1.312 0 00-.22-.066c.05-.06.146-.133.183-.198.053-.128.082-.264.088-.402v-.02a1.21 1.21 0 00-.061-.4c-.045-.134-.101-.2-.183-.333-.084-.066-.167-.132-.267-.132h-.016c-.093 0-.176.03-.262.132a.8.8 0 00-.205.334 1.18 1.18 0 00-.09.4v.019c.002.089.008.179.02.267-.193-.067-.438-.135-.607-.202a1.635 1.635 0 01-.018-.2v-.02a1.772 1.772 0 01.15-.768c.082-.22.232-.406.43-.533a.985.985 0 01.594-.2zm-2.962.059h.036c.142 0 .27.048.399.135.146.129.264.288.344.465.09.199.14.4.153.667v.004c.007.134.006.2-.002.266v.08c-.03.007-.056.018-.083.024-.152.055-.274.135-.393.2.012-.09.013-.18.003-.267v-.015c-.012-.133-.04-.2-.082-.333a.613.613 0 00-.166-.267.248.248 0 00-.183-.064h-.021"/></svg>
-      <span><b>Linux</b><small>Download · AppImage, deb, rpm</small></span>
-    </a>
+      <span><b>Linux</b><small>Coming soon · AppImage, deb, rpm</small></span>
+    </span>
   </div>
 
   <div class="works">
@@ -390,31 +396,32 @@
 
   <section id="pricing">
     <div class="hd">
-      <h2>Planned Pricing</h2>
-      <p>Proposed plans. Payments and account features are not available yet.</p>
+      <h2>Simple Pricing</h2>
+      <p>Confirmed prices. Payments and account features are not available yet.</p>
     </div>
     <div class="price">
       <div class="plan pop">
-        <small class="plan-label">FREE TRIAL · PROPOSED</small>
+        <small class="plan-label">FREE TRIAL</small>
         <h3>Try Cordė</h3>
         <strong class="plan-price">7 days</strong>
-        <p class="plan-detail">Free, with no payment card required.</p>
+        <p class="plan-detail">Free</p>
+        <span class="trial-tag">No credit card required</span>
       </div>
       <div class="plan">
-        <small class="plan-label">MONTHLY · PROPOSED</small>
+        <small class="plan-label">MONTHLY</small>
         <h3>Monthly</h3>
-        <strong class="plan-price">$4.99</strong>
+        <strong class="plan-price">$2.99</strong>
         <p class="plan-detail">Per month after the free trial.</p>
       </div>
       <div class="plan">
-        <small class="plan-label">ANNUAL · PROPOSED</small>
+        <small class="plan-label">ANNUAL</small>
         <h3>Annual</h3>
-        <strong class="plan-price">$39.99</strong>
+        <strong class="plan-price">$34.99</strong>
         <p class="plan-detail">Per year after the free trial.</p>
       </div>
     </div>
     <p class="pricing-status">All plans include unlimited local dictation on macOS, Windows, and Linux. One active device per account; device deactivation and transfer are planned.</p>
-    <p class="legal-note">Pricing, trial, billing, device, and license terms are proposed and require owner/legal review. Payments and account features are not available yet.</p>
+    <p class="legal-note">Payment, account, and license features are not available yet. Billing, device, and license terms require owner/legal review.</p>
   </section>
 
   <section id="faq" style="padding-top:20px">
@@ -423,7 +430,7 @@
       <details><summary>Does my voice leave my computer?</summary><p>Speech recognition runs locally, and audio isn't uploaded for transcription. Account, subscription, and license checks require an internet connection.</p></details>
       <details><summary>Which apps does it work with?</summary><p>Any app that accepts keyboard input. It was designed for terminals and CLI agents like Claude Code.</p></details>
       <details><summary>How accurate is it?</summary><p>It uses OpenAI's Whisper models in an optimized runtime. Smaller models are faster, and you can pick a larger one for more accuracy.</p></details>
-      <details><summary>What are the planned plans?</summary><p>The proposed plan includes a 7-day free trial with no payment card required, then $4.99/month or an optional $39.99/year. Pricing and payments aren't available yet. After the trial, an active plan would be required to keep dictating; the proposed experience is to ask for an upgrade when you try—not on every app launch. Existing transcripts and settings won't be deleted or locked.</p></details>
+      <details><summary>How much does Cordė cost?</summary><p>Cordė includes a 7-day free trial with no credit card required. After the trial, the confirmed prices are $2.99/month or $34.99/year. Payments aren't available yet. Once subscriptions launch, an active plan will be required to dictate; the planned upgrade prompt appears when you try to dictate, not on every app launch. Existing transcripts and settings won't be deleted or locked.</p></details>
       <details><summary>Can I use Cordė on a replacement device?</summary><p>The proposed plan allows one active device per account. A way to deactivate or transfer activation when replacing a device is planned; account and license features aren't available yet.</p></details>
       <details><summary>How do I say the name?</summary><p>“Cord-ay”.</p></details>
     </div>
@@ -432,7 +439,7 @@
   <section style="padding-top:20px">
     <div class="final">
       <h2>Stop typing. Start speaking.</h2>
-      <a class="btn lg" href="#pricing">View planned pricing</a>
+      <a class="btn lg" href="#pricing">View pricing</a>
     </div>
   </section>
 

@@ -329,10 +329,47 @@ h1 {
   flex-wrap: wrap;
 }
 
-.note {
-  margin-top: 14px;
-  font-size: 12px;
-  color: var(--mut);
+.trial-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: fit-content;
+  max-width: 100%;
+  margin: 18px auto 0;
+  padding: 12px 16px;
+  border: 1px solid rgba(150, 135, 255, .36);
+  border-radius: 12px;
+  background: linear-gradient(110deg, rgba(109, 93, 252, .2), rgba(255, 255, 255, .035));
+  text-align: left;
+  transition: border-color .2s, background .2s, transform .2s;
+}
+
+.trial-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(180, 168, 255, .72);
+  background: linear-gradient(110deg, rgba(109, 93, 252, .3), rgba(255, 255, 255, .06));
+}
+
+.trial-card-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.trial-card-copy b {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.trial-card-copy small {
+  color: #c4c2dc;
+  font-size: 11px;
+}
+
+.trial-card-arrow {
+  color: #c9c0ff;
+  font-size: 20px;
+  line-height: 1;
 }
 
 .dl {
@@ -361,6 +398,17 @@ h1 {
   border-color: rgba(150, 135, 255, .5);
   box-shadow: 0 0 30px rgba(100, 80, 255, .25);
   transform: translateY(-2px);
+}
+
+.dlb[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: .7;
+}
+
+.dlb[aria-disabled="true"]:hover {
+  border-color: var(--line);
+  box-shadow: none;
+  transform: none;
 }
 
 .dlb svg {

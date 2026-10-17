@@ -143,17 +143,14 @@
         <p class="billing-success-eyebrow">PAYMENT RECEIVED</p>
         <h1>You're all set.</h1>
         <p class="billing-success-copy">
-          Your payment was successful. Return to the Cordė desktop app to refresh your plan.
+          Your payment was successful. Open Cordė to refresh your plan.
         </p>
-        <ol>
-          <li>Open <strong>Cordė</strong> on your computer.</li>
-          <li>Go to <strong>Settings → Billing</strong>.</li>
-          <li>Select <strong>Refresh status</strong> to load your plan.</li>
-        </ol>
+        <a class="btn lg" href="corde://open">Open Cordė desktop app</a>
         <p class="billing-success-note">
-          It may take a moment for your subscription to appear. If it doesn't show yet, wait briefly and refresh again.
+          In the app, open <strong>Settings → Billing</strong> and select <strong>Refresh status</strong>.
+          If your plan doesn't appear yet, wait a moment and refresh again.
         </p>
-        <a class="btn lg" href="/">Return to Cordė website</a>
+        <a class="billing-success-home" href="/">Return to Cordė website</a>
       </div>
     </main>
   {:else}
@@ -490,28 +487,28 @@
   }
 
   .billing-success-card {
-    width: min(100%, 560px);
-    padding: clamp(28px, 6vw, 52px);
+    width: min(100%, 440px);
+    padding: clamp(24px, 5vw, 36px);
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 24px;
+    border-radius: 20px;
     background: rgba(13, 13, 32, 0.84);
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
   }
 
   .billing-success-icon {
     display: grid;
-    width: 52px;
-    height: 52px;
-    margin-bottom: 24px;
+    width: 42px;
+    height: 42px;
+    margin-bottom: 18px;
     place-items: center;
     border-radius: 50%;
     background: rgba(143, 131, 255, 0.16);
     color: #b9b0ff;
-    font-size: 28px;
+    font-size: 23px;
   }
 
   .billing-success-eyebrow {
-    margin: 0 0 12px;
+    margin: 0 0 8px;
     color: #b9b0ff;
     font-size: 12px;
     font-weight: 700;
@@ -520,26 +517,31 @@
 
   .billing-success h1 {
     margin: 0;
-    font-size: clamp(36px, 8vw, 52px);
+    font-size: clamp(32px, 7vw, 42px);
   }
 
   .billing-success-copy,
   .billing-success-note {
     color: rgba(255, 255, 255, 0.72);
-    line-height: 1.65;
-  }
-
-  .billing-success ol {
-    display: grid;
-    gap: 12px;
-    margin: 28px 0;
-    padding-left: 24px;
     line-height: 1.55;
   }
 
+  .billing-success-copy {
+    margin: 12px 0 20px;
+  }
+
   .billing-success-note {
-    margin-bottom: 28px;
-    font-size: 14px;
+    margin: 18px 0 0;
+    font-size: 13px;
+  }
+
+  .billing-success-home {
+    display: inline-block;
+    margin-top: 18px;
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 13px;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .keys {

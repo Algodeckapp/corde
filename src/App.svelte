@@ -473,6 +473,9 @@
   <footer>
     <div>© Cordė · Voice to terminal</div>
     <div>Code at the speed of thought.</div>
+    <a class="footer-release-link" href="https://github.com/Algodeckapp/corde-downloads/releases/latest" target="_blank" rel="noopener noreferrer">
+      Download Cordė for Windows
+    </a>
   </footer>
   {/if}
 </div>

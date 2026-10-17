@@ -895,6 +895,16 @@ footer {
   font-size: 12px;
 }
 
+footer .footer-release-link {
+  color: var(--fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+footer .footer-release-link:hover {
+  color: var(--acc);
+}
+
 #features .card {
   opacity: 0;
   transform: translateY(18px) scale(.96);

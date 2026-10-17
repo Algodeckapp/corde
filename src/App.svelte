@@ -74,12 +74,21 @@
   let recommendedOS = "";
   let mobileMenuOpen = false;
   let navHidden = false;
+  let billingSuccess = false;
 
   onMount(() => {
     const previousScrollRestoration = history.scrollRestoration;
     history.scrollRestoration = "manual";
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+
+    billingSuccess = new URLSearchParams(window.location.search).get("billing") === "success";
+    if (billingSuccess) {
+      document.title = "Payment received | Cordė";
+      return () => {
+        history.scrollRestoration = previousScrollRestoration;
+      };
+    }
 
     loop();
     const u = navigator.userAgent;
@@ -127,6 +136,27 @@
 
 <div class="glow" aria-hidden="true"></div><div class="haze" aria-hidden="true"></div>
 <div class="wrap">
+  {#if billingSuccess}
+    <main class="billing-success" aria-live="polite">
+      <div class="billing-success-card">
+        <div class="billing-success-icon" aria-hidden="true">✓</div>
+        <p class="billing-success-eyebrow">PAYMENT RECEIVED</p>
+        <h1>You're all set.</h1>
+        <p class="billing-success-copy">
+          Your payment was successful. Return to the Cordė desktop app to refresh your plan.
+        </p>
+        <ol>
+          <li>Open <strong>Cordė</strong> on your computer.</li>
+          <li>Go to <strong>Settings → Billing</strong>.</li>
+          <li>Select <strong>Refresh status</strong> to load your plan.</li>
+        </ol>
+        <p class="billing-success-note">
+          It may take a moment for your subscription to appear. If it doesn't show yet, wait briefly and refresh again.
+        </p>
+        <a class="btn lg" href="/">Return to Cordė website</a>
+      </div>
+    </main>
+  {:else}
   <nav class:hidden={navHidden}>
     <a class="brand" href="#top" aria-label="Cordė home">
       <img src={cordeLogo} alt="" aria-hidden="true" />Cordė
@@ -447,10 +477,71 @@
     <div>© Cordė · Voice to terminal</div>
     <div>Code at the speed of thought.</div>
   </footer>
+  {/if}
 </div>
 
 <style>
   /* Local overrides if needed, but most is in app.css */
+  .billing-success {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 48px 20px;
+  }
+
+  .billing-success-card {
+    width: min(100%, 560px);
+    padding: clamp(28px, 6vw, 52px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    background: rgba(13, 13, 32, 0.84);
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.34);
+  }
+
+  .billing-success-icon {
+    display: grid;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 24px;
+    place-items: center;
+    border-radius: 50%;
+    background: rgba(143, 131, 255, 0.16);
+    color: #b9b0ff;
+    font-size: 28px;
+  }
+
+  .billing-success-eyebrow {
+    margin: 0 0 12px;
+    color: #b9b0ff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+  }
+
+  .billing-success h1 {
+    margin: 0;
+    font-size: clamp(36px, 8vw, 52px);
+  }
+
+  .billing-success-copy,
+  .billing-success-note {
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.65;
+  }
+
+  .billing-success ol {
+    display: grid;
+    gap: 12px;
+    margin: 28px 0;
+    padding-left: 24px;
+    line-height: 1.55;
+  }
+
+  .billing-success-note {
+    margin-bottom: 28px;
+    font-size: 14px;
+  }
+
   .keys {
     display: flex;
     gap: 6px;

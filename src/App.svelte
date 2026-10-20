@@ -476,6 +476,9 @@
     <a class="footer-release-link" href="https://github.com/corde-voice/corde-releases/releases/latest" target="_blank" rel="noopener noreferrer">
       Download Cordė for Windows
     </a>
+    <a class="footer-release-link" href="https://x.com/Corde_dex" target="_blank" rel="noopener noreferrer">
+      Follow on X @Corde_dex
+    </a>
   </footer>
   {/if}
 </div>

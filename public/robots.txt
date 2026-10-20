@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://corde-rho.vercel.app/sitemap.xml
+Sitemap: https://corde.site/sitemap.xml

@@ -75,12 +75,43 @@
   let mobileMenuOpen = false;
   let navHidden = false;
   let billingSuccess = false;
+  let emailConfirmation: {
+    state: "success" | "error";
+    appUrl: string | null;
+    mobile: boolean;
+  } | null = null;
 
   onMount(() => {
     const previousScrollRestoration = history.scrollRestoration;
     history.scrollRestoration = "manual";
     document.documentElement.scrollTop = 0;
     document.body.scrollTop = 0;
+
+    if (window.location.pathname.replace(/\/+$/, "") === "/auth/confirmed") {
+      const confirmationUrl = new URL(window.location.href);
+      const code = confirmationUrl.searchParams.get("code");
+      const failed = ["error", "error_code", "error_description"].some((key) =>
+        confirmationUrl.searchParams.has(key)
+      );
+      const mobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      let appUrl: string | null = null;
+      if (code) {
+        const callbackUrl = new URL("corde://auth/callback");
+        callbackUrl.searchParams.set("code", code);
+        appUrl = callbackUrl.toString();
+      }
+      emailConfirmation = {
+        state: code && !failed ? "success" : "error",
+        appUrl,
+        mobile,
+      };
+      document.title = emailConfirmation.state === "success"
+        ? "Email confirmed | Cordė"
+        : "Confirmation link issue | Cordė";
+      return () => {
+        history.scrollRestoration = previousScrollRestoration;
+      };
+    }
 
     billingSuccess = new URLSearchParams(window.location.search).get("billing") === "success";
     if (billingSuccess) {
@@ -136,7 +167,40 @@
 
 <div class="glow" aria-hidden="true"></div><div class="haze" aria-hidden="true"></div>
 <div class="wrap">
-  {#if billingSuccess}
+  {#if emailConfirmation}
+    <main class="billing-success" aria-live="polite">
+      <div class="billing-success-card">
+        <div class="billing-success-icon" aria-hidden="true">
+          {emailConfirmation.state === "success" ? "✓" : "!"}
+        </div>
+        <p class="billing-success-eyebrow">
+          {emailConfirmation.state === "success" ? "EMAIL CONFIRMED" : "CONFIRMATION LINK ISSUE"}
+        </p>
+        {#if emailConfirmation.state === "success"}
+          <h1>Your email is confirmed.</h1>
+          <p class="billing-success-copy">
+            {emailConfirmation.mobile
+              ? "Your Cordė account is ready. Open Cordė on your laptop and sign in with this email to continue."
+              : "Your Cordė account is ready. Continue in the desktop app to finish signing in."}
+          </p>
+          {#if emailConfirmation.appUrl && !emailConfirmation.mobile}
+            <a class="btn lg" href={emailConfirmation.appUrl}>Open Cordė desktop app</a>
+          {/if}
+          <p class="billing-success-note">
+            {emailConfirmation.mobile
+              ? "You can close this page and return to your laptop. Your account will be ready when you sign in to Cordė."
+              : "If the app doesn't open, launch Cordė on your laptop and sign in with the email address you just confirmed."}
+          </p>
+        {:else}
+          <h1>This confirmation link couldn't be used.</h1>
+          <p class="billing-success-copy">
+            The link may have expired or already been used. Return to Cordė on your laptop and request a new confirmation email.
+          </p>
+        {/if}
+        <a class="billing-success-home" href="/">Return to Cordė website</a>
+      </div>
+    </main>
+  {:else if billingSuccess}
     <main class="billing-success" aria-live="polite">
       <div class="billing-success-card">
         <div class="billing-success-icon" aria-hidden="true">✓</div>
